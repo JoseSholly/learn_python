@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Python Kids Learning</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="bi bi-code-slash me-2"></i>Learn Python
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'user:dashboard' %}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lessons">Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#achievements">Achievements</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Content -->
+    <div class="container py-5">
+        <!-- Welcome Header -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="text-left">
+                    <h1 class="hero-title mb-3" style="font-size: 30px;">Hello, {{ user.first_name|default:user.username }}!</h1>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Overview -->
+        <!-- <div class="row mb-5">
+            <div class="col-lg-10 col-xl-8 mx-auto">
+                <div class="feature-card text-center">
+                    <h3 class="section-title mb-4">Your Learning Progress</h3> -->
+                    
+                    <!-- Progress Circle -->
+                    <!-- <div class="d-flex justify-content-center mb-4">
+                        <div class="position-relative" style="width: 140px; height: 140px;">
+                            <svg class="w-100 h-100" viewBox="0 0 140 140">
+                                <circle cx="70" cy="70" r="60" fill="none" stroke="var(--border-color)" stroke-width="8"/>
+                                <circle cx="70" cy="70" r="60" fill="none" stroke="var(--primary-color)" stroke-width="8" 
+                                        stroke-dasharray="377" stroke-dashoffset="226" stroke-linecap="round" 
+                                        transform="rotate(-90 70 70)"/>
+                            </svg>
+                            <div class="position-absolute top-50 start-50 translate-middle text-center">
+                                <div class="h2 mb-0 text-primary">40%</div>
+                                <small class="text-muted fw-medium">Complete</small>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Quick Stats -->
+                    <!-- <div class="row text-center g-4">
+                        <div class="col-4">
+                            <div class="h4 mb-1 text-primary fw-semibold">12</div>
+                            <small class="text-muted">Lessons Completed</small>
+                        </div>
+                        <div class="col-4">
+                            <div class="h4 mb-1 text-accent fw-semibold">18</div>
+                            <small class="text-muted">Remaining</small>
+                        </div>
+                        <div class="col-4">
+                            <div class="h4 mb-1" style="color: #f59e0b;">5</div>
+                            <small class="text-muted">Badges Earned</small>
+                        </div>
+                    </div> -->
+                <!-- </div>
+            </div>
+        </div> -->
+
+        <!-- Quick Actions -->
+        <!-- <div class="row mb-5">
+            <div class="col-12">
+                <h3 class="section-title text-center mb-4">Quick Actions</h3>
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="feature-card text-center h-100">
+                            <div class="feature-icon mb-3" style="background-color: var(--primary-color);">
+                                <i class="bi bi-play-circle"></i>
+                            </div>
+                            <h5 class="feature-title mb-3">Continue Learning</h5>
+                            <p class="feature-description mb-4">Pick up where you left off with "Python Variables"</p>
+                            <a href="#" class="btn btn-primary">Continue Lesson</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature-card text-center h-100">
+                            <div class="feature-icon mb-3" style="background-color: var(--accent-color);">
+                                <i class="bi bi-grid-3x3-gap"></i>
+                            </div>
+                            <h5 class="feature-title mb-3">Browse Topics</h5>
+                            <p class="feature-description mb-4">Explore all available Python lessons and topics</p>
+                            <a href="#" class="btn btn-accent">Browse All</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="feature-card text-center h-100">
+                            <div class="feature-icon mb-3" style="background-color: #f59e0b;">
+                                <i class="bi bi-trophy"></i>
+                            </div>
+                            <h5 class="feature-title mb-3">View Achievements</h5>
+                            <p class="feature-description mb-4">Check out your badges and learning milestones</p>
+                            <a href="#" class="btn btn-outline-secondary">View Badges</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Lesson Recommendations -->
+        <div class="row mb-5" id="lessons">
+            <div class="col-12">
+                <h3 class="section-title text-left mb-4" style="font-size: 30px;">Courses</h3>
+                <!-- Move row outside the loop to allow flexible wrapping -->
+                <div class="row g-4">
+                    {% for lesson in lessons %}
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="lesson-card h-100">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="lesson-icon">
+                                        <i class="bi bi-code-slash"></i>
+                                </div>
+                                {% if lesson.difficulty_level == "1" %}
+                                    <span class="badge bg-success">{{ lesson.get_difficulty_level_display }}</span>
+                                {% elif lesson.difficulty_level == "2" %}
+                                    <span class="badge bg-info">{{ lesson.get_difficulty_level_display }}</span>
+                                {% elif lesson.difficulty_level == "3" %}
+                                    <span class="badge bg-danger">{{ lesson.get_difficulty_level_display }}</span>
+                                {% endif %}
+                            </div>
+                            <h5 class="lesson-title mb-2">{{ lesson.topic }}</h5>
+                            <p class="lesson-description mb-3">{{ lesson.subtopic }}</p>
+                            <div class="lesson-meta mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>{{ lesson.duration|default:"15" }} min</small>
+                                    <!-- {% if lesson.progress %}
+                                        <small class="text-primary fw-medium">{{ lesson.progress }}% complete</small>
+                                    {% else %}
+                                        <small class="text-muted fw-medium">0% complete</small>
+                                    {% endif %} -->
+                                </div>
+                                <!-- <div class="progress mb-2" style="height: 6px;">
+                                    <div class="progress-bar {% if lesson.progress > 0 %}bg-primary{% else %}bg-secondary{% endif %}" 
+                                         style="width: {{ lesson.progress|default:0 }}%"></div>
+                                </div> -->
+                            </div>
+                            {% if lesson.progress == 100 %}
+                                <button class="btn btn-success w-100">Review Lesson</button>
+                            {% elif lesson.progress > 0 %}
+                                <button class="btn btn-warning w-100">Continue Lesson</button>
+                            {% else %}
+                                <button class="btn btn-primary w-100">Start Lesson</button>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+            
+                    <!-- <div class="col-lg-6 col-xl-4">
+                        <div class="lesson-card h-100">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="lesson-icon" style="background-color: #0ea5e9;">
+                                    <i class="bi bi-calculator"></i>
+                                </div>
+                                <span class="badge bg-success">Beginner</span>
+                            </div>
+                            <h5 class="lesson-title mb-2">Variables and Numbers</h5>
+                            <p class="lesson-description mb-3">Discover how to store information and do math with Python!</p>
+                            <div class="lesson-meta mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>20 min</small>
+                                    <small class="text-primary fw-medium">75% complete</small>
+                                </div>
+                                <div class="progress mb-2" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-warning w-100">Continue Lesson</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="lesson-card h-100">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="lesson-icon" style="background-color: #f59e0b;">
+                                    <i class="bi bi-question-circle"></i>
+                                </div>
+                                <span class="badge bg-success">Beginner</span>
+                            </div>
+                            <h5 class="lesson-title mb-2">Making Decisions</h5>
+                            <p class="lesson-description mb-3">Teach your program to make choices with if statements!</p>
+                            <div class="lesson-meta mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>25 min</small>
+                                    <small class="text-primary fw-medium">30% complete</small>
+                                </div>
+                                <div class="progress mb-2" style="height: 6px;">
+                                    <div class="progress-bar bg-primary" style="width: 30%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-warning w-100">Continue Lesson</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="lesson-card h-100">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="lesson-icon" style="background-color: var(--primary-color);">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </div>
+                                <span class="badge bg-info">Intermediate</span>
+                            </div>
+                            <h5 class="lesson-title mb-2">Loops and Repetition</h5>
+                            <p class="lesson-description mb-3">Make your code repeat actions automatically!</p>
+                            <div class="lesson-meta mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>30 min</small>
+                                    <small class="text-muted fw-medium">0% complete</small>
+                                </div>
+                                <div class="progress mb-2" style="height: 6px;">
+                                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100">Start Lesson</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="lesson-card h-100">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="lesson-icon" style="background-color: var(--accent-color);">
+                                    <i class="bi bi-list-ul"></i>
+                                </div>
+                                <span class="badge bg-info">Intermediate</span>
+                            </div>
+                            <h5 class="lesson-title mb-2">Lists and Collections</h5>
+                            <p class="lesson-description mb-3">Learn to organize multiple items in your programs!</p>
+                            <div class="lesson-meta mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>35 min</small>
+                                    <small class="text-muted fw-medium">0% complete</small>
+                                </div>
+                                <div class="progress mb-2" style="height: 6px;">
+                                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100">Start Lesson</button>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="lesson-card h-100">
+                            <div class="d-flex align-items-start justify-content-between mb-3">
+                                <div class="lesson-icon" style="background-color: #6b7280;">
+                                    <i class="bi bi-gear"></i>
+                                </div>
+                                <span class="badge bg-danger">Advanced</span>
+                            </div>
+                            <h5 class="lesson-title mb-2">Functions and Reusability</h5>
+                            <p class="lesson-description mb-3">Create your own commands that you can use over and over!</p>
+                            <div class="lesson-meta mb-3">
+                                <div class="d-flex align-items-center justify-content-between mb-2">
+                                    <small class="text-muted"><i class="bi bi-clock me-1"></i>40 min</small>
+                                    <small class="text-muted fw-medium">0% complete</small>
+                                </div>
+                                <div class="progress mb-2" style="height: 6px;">
+                                    <div class="progress-bar bg-secondary" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary w-100">Start Lesson</button>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+        <!-- Achievements / Badges -->
+        <!-- <div class="row mb-5" id="achievements">
+            <div class="col-12">
+                <h3 class="section-title text-center mb-4">Your Achievements</h3>
+                <div class="feature-card">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h5 class="mb-0 fw-semibold">Recent Badges</h5>
+                        <a href="#" class="btn btn-sm btn-outline-secondary">View All</a>
+                    </div>
+                    <div class="row g-4 justify-content-center">
+                        <div class="col-auto">
+                            <div class="text-center" data-bs-toggle="tooltip" title="Completed 5 lessons in a row">
+                                <div class="feature-icon mb-2" style="width: 64px; height: 64px; background-color: #f59e0b;">
+                                    <i class="bi bi-fire" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <small class="text-muted fw-medium">Streak Master</small>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="text-center" data-bs-toggle="tooltip" title="Completed first Python lesson">
+                                <div class="feature-icon mb-2" style="width: 64px; height: 64px; background-color: var(--primary-color);">
+                                    <i class="bi bi-star" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <small class="text-muted fw-medium">First Steps</small>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="text-center" data-bs-toggle="tooltip" title="Learned about variables">
+                                <div class="feature-icon mb-2" style="width: 64px; height: 64px; background-color: var(--accent-color);">
+                                    <i class="bi bi-code-square" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <small class="text-muted fw-medium">Variable Master</small>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="text-center" data-bs-toggle="tooltip" title="Completed 10 lessons">
+                                <div class="feature-icon mb-2" style="width: 64px; height: 64px; background-color: #8b5cf6;">
+                                    <i class="bi bi-trophy" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <small class="text-muted fw-medium">Achiever</small>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="text-center" data-bs-toggle="tooltip" title="Practiced coding for 7 days">
+                                <div class="feature-icon mb-2" style="width: 64px; height: 64px; background-color: #ef4444;">
+                                    <i class="bi bi-calendar-check" style="font-size: 1.5rem;"></i>
+                                </div>
+                                <small class="text-muted fw-medium">Weekly Warrior</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Language & Personalization Tools -->
+        <!-- <div class="row">
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="feature-icon me-3" style="width: 48px; height: 48px; background-color: var(--primary-color);">
+                            <i class="bi bi-globe" style="font-size: 1.1rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="feature-title mb-1">Learning Language</h5>
+                            <p class="feature-description mb-0">Choose your preferred language</p>
+                        </div>
+                    </div>
+                    <select class="form-select">
+                        <option selected>English</option>
+                        <option>Yoruba</option>
+                        <option>Igbo</option>
+                        <option>Hausa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-6 mb-4">
+                <div class="feature-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="feature-icon me-3" style="width: 48px; height: 48px; background-color: var(--accent-color);">
+                            <i class="bi bi-sliders" style="font-size: 1.1rem;"></i>
+                        </div>
+                        <div>
+                            <h5 class="feature-title mb-1">Difficulty Level</h5>
+                            <p class="feature-description mb-0">Adjust to match your pace</p>
+                        </div>
+                    </div>
+                    <select class="form-select">
+                        <option>Beginner</option>
+                        <option selected>Intermediate</option>
+                        <option>Advanced</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Bootstrap 5 JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+\" crossorigin="anonymous"></script>
+    
+    <!-- Initialize tooltips -->
+    <script>
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+    </script>
+</body>
+</html>

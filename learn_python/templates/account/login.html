@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load account %}
+
+{% block title %}Login - Python Kids{% endblock %}
+
+{% block content %}
+<!-- Centered card login design with minimal styling -->
+<div class="login-page">
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-card">
+                    <div class="text-center mb-4">
+                        <h2 class="login-title">Welcome Back</h2>
+                        <p class="login-subtitle">Sign in to continue your coding journey</p>
+                    </div>
+
+                    {% if form.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            {% trans "Your username and password didn't match. Please try again." %}
+                        </div>
+                    {% endif %}
+
+                    <form method="post" action="{% url 'account_login' %}">
+                        {% csrf_token %}
+                        {{ form.non_field_errors }}
+                        
+                        <div class="mb-3">
+                            <label for="{{ form.login.id_for_label }}" class="form-label">{{ form.login.label }}</label>
+                            <input type="{{ form.login.field.widget.input_type }}" 
+                                   class="form-control form-control-lg" 
+                                   id="{{ form.login.id_for_label }}" 
+                                   name="{{ form.login.name }}" 
+                                   value="{{ form.login.value|default:'' }}"
+                                   placeholder="Enter your email or username">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="{{ form.password.id_for_label }}" class="form-label">{{ form.password.label }}</label>
+                            <input type="password" 
+                                   class="form-control form-control-lg" 
+                                   id="{{ form.password.id_for_label }}" 
+                                   name="{{ form.password.name }}"
+                                   placeholder="Enter your password">
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" 
+                                   class="form-check-input" 
+                                   id="{{ form.remember.id_for_label }}" 
+                                   name="{{ form.remember.name }}">
+                            <label class="form-check-label" for="{{ form.remember.id_for_label }}">
+                                {{ form.remember.label }}
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                            {% trans "Sign In" %}
+                        </button>
+                    </form>
+
+                    <div class="text-center">
+                        <p class="mb-2">
+                            <a href="{% url 'account_reset_password' %}" class="text-decoration-none">
+                                {% trans "Forgot Password?" %}
+                            </a>
+                        </p>
+                        <p class="mb-0">
+                            {% trans "Don't have an account?" %} 
+                            <a href="{% url 'account_signup' %}" class="text-decoration-none fw-medium">
+                                {% trans "Sign up" %}
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,10 +2,21 @@ from django.db import models
 
 
 class Lesson(models.Model):
+    DIFFICULTY_CHOICES = [
+        ('1', 'Beginner'),
+        ('2', 'Intermediate'),
+        ('3', 'Advanced'),
+    ]
     topic = models.CharField(max_length=100)       # e.g. "Introduction to Python"
     subtopic = models.CharField(max_length=100)    # e.g. "Variables"
     code_example = models.TextField()              # Python code snippet
     code_explanation = models.TextField()          # "What this code does"
+    difficulty_level = models.CharField(
+        max_length=50,
+        choices=DIFFICULTY_CHOICES,
+        default='1',
+        help_text="The difficulty level of the lesson."
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
 

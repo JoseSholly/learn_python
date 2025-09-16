@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Kids - Learn Python the Fun Way</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <!-- Decoupled landing page with minimal navigation -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light py-4">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Python Kids</a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-primary text-white px-4 ms-2" href="{% url 'account_login' %}">Get Started</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section with minimal design and lots of white space -->
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-8">
+                    <h1 class="hero-title mb-4">Learn Python the Fun Way</h1>
+                    <p class="hero-subtitle mb-5">Interactive coding lessons designed for kids. Start your programming journey with colorful challenges and engaging activities.</p>
+                    <div class="d-flex justify-content-center gap-3 flex-wrap">
+                        <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg px-5">Start Learning</a>
+                        <a href="#features" class="btn btn-outline-secondary btn-lg px-5">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features section with minimal card design -->
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-3">Why Choose Python Kids?</h2>
+                    <p class="section-subtitle">Everything you need to start coding, designed specifically for young learners.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-joystick"></i>
+                        </div>
+                        <h5 class="feature-title mb-3">Interactive Lessons</h5>
+                        <p class="feature-description">Learn through fun, hands-on coding exercises that feel like playing games.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-globe"></i>
+                        </div>
+                        <h5 class="feature-title mb-3">Multiple Languages</h5>
+                        <p class="feature-description">Code in English, Yoruba, Igbo, or Hausa with full audio support.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon mb-3">
+                            <i class="bi bi-trophy"></i>
+                        </div>
+                        <h5 class="feature-title mb-3">Track Progress</h5>
+                        <p class="feature-description">Earn badges and certificates as you complete lessons and challenges.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code preview section with minimal styling -->
+    <!-- Code Preview Section -->
+    <section class="preview-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <h3 class="preview-title mb-3">Try Coding Right Now</h3>
+                    <p class="preview-description mb-4">See how easy it is to create amazing things with Python. This code draws a beautiful star!</p>
+                    <a href="#" class="btn btn-accent">Start Your First Lesson</a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="code-preview">
+                        <div class="code-header">
+                            <span class="code-title">draw_star.py</span>
+                        </div>
+                        <pre class="code-content"><code>import turtle
+
+star = turtle.Turtle()
+star.color("gold")
+
+for i in range(5):
+    star.forward(100)
+    star.right(144)
+
+turtle.done()</code></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials with minimal card design -->
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-3">What Kids Are Saying</h2>
+                    <p class="section-subtitle">Real feedback from our young programmers and their parents.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Coding is so fun now! I made my first game and showed it to all my friends."</p>
+                        <div class="testimonial-author">
+                            <strong>Tolu, age 10</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"I love learning in Yoruba! It makes everything easier to understand."</p>
+                        <div class="testimonial-author">
+                            <strong>Funmi, age 8</strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The badges make me want to learn more every day!"</p>
+                        <div class="testimonial-author">
+                            <strong>Chidi, age 12</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA section with minimal design -->
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-6">
+                    <h2 class="cta-title mb-3">Ready to Start Coding?</h2>
+                    <p class="cta-description mb-4">Join thousands of kids who are already learning Python and building amazing projects.</p>
+                    <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg px-5">Get Started Free</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimal footer -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="footer-text mb-0">&copy; 2024 Python Kids. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="footer-link me-3">Privacy Policy</a>
+                    <a href="#" class="footer-link me-3">Terms of Service</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
