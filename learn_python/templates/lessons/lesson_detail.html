@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load pygment_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card p-4">
+                <span class="badge bg-success float-end">{{ lesson.get_difficulty_level_display }}</span>
+                <h1 class="mt-2">{{ lesson.topic }}</h1>
+                <h2 class="text-muted">{{ lesson.subtopic }}</h2>
+                
+                <hr>
+
+                <h3>Code Example</h3>
+                <pre class="bg-light p-3 border rounded">
+                    <code class="language-python">{% autoescape off %}{{ lesson.code_example|pygmentize:'python' }}{% endautoescape %}</code>
+                </pre>
+
+                <h3>Explanation</h3>
+                <p>{{ lesson.code_explanation }}</p>
+
+                <h3>Translations</h3>
+                <ul class="list-group">
+                    {% for translation in lesson.translations.all %}
+                        <li class="list-group-item">
+                            <strong>{{ translation.get_language_display }}</strong>: {{ translation.concept_text }}
+                            {% if translation.audio_file %}
+                                <audio controls>
+                                    <source src="{{ translation.audio_file.url }}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            {% endif %}
+                        </li>
+                    {% empty %}
+                        <li class="list-group-item text-muted">No translations available for this lesson.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
