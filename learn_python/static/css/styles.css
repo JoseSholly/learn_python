@@ -241,7 +241,7 @@ h6 {
   padding: 1.5rem;
   margin: 0;
   background-color: var(--text-primary);
-  color: #fff;
+  color: #d1d5db;
   font-family: "Monaco", "Menlo", monospace;
   font-size: 0.875rem;
   line-height: 1.6;
@@ -615,6 +615,63 @@ h6 {
   padding-top: 2rem;
 }
 
+/* Tutors Section */
+.tutors-section {
+  padding: var(--section-padding);
+  background-color: var(--background);
+}
+
+.tutor-card {
+  padding: 2rem 1rem;
+  transition: all 0.2s ease;
+  border: white;
+}
+
+.tutor-card:hover {
+  transform: translateY(-4px);
+}
+
+.tutor-avatar {
+  width: 320px;
+  height: 320px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 0px none;
+  transition: all 0.2s ease;
+}
+
+.tutor-card:hover .tutor-avatar {
+  border-color: var(--primary-color);
+}
+
+.tutor-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tutor-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.tutor-language {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* Powered By Attribution Styles */
+.powered-by {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.powered-by strong {
+  color: var(--primary-color);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
@@ -680,6 +737,11 @@ h6 {
   .language-toggle .btn {
     flex: 1;
   }
+
+  .tutor-avatar {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -724,5 +786,10 @@ h6 {
 
   .audio-progress {
     width: 100%;
+  }
+
+  .tutor-avatar {
+    width: 80px;
+    height: 80px;
   }
 }

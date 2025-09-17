@@ -163,7 +163,10 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
+
+ACCOUNT_SIGNUP_FORM_CLASS = "user.forms.CustomSignupForm"
+
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'first_name', 'last_name', 'password1*', 'password2*']
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGIN_METHODS = {"email"}
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None

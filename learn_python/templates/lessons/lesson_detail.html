@@ -5,8 +5,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">
-                <i class="bi bi-code-slash me-2"></i>Learn
+            <a class="navbar-brand" href="{% url 'user:dashboard' %}">
+                <i class="bi bi-code-slash me-2"></i>LearnPython
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -131,11 +131,25 @@
                 <!-- Navigation -->
                 <div class="lesson-navigation mt-5">
                     <div class="d-flex justify-content-center">
-                        <button class="btn btn-primary">
-                            Completed<i class="bi bi-arrow-right ms-2"></i>
-                        </button>
+                        {% if is_completed %}
+                            <!-- Already completed -->
+                            <a href="{% url 'user:dashboard' %}" class="btn btn-success">
+                                 Completed <i class="bi bi-check2-circle ms-2"></i> Next
+                            </a>
+                        {% else %}
+                            <!-- Not completed yet -->
+                            <form action="{% url 'user:complete_lesson' lesson.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-primary">
+                                    Mark as Completed <i class="bi bi-check2-circle ms-2"></i>
+                                </button>
+                            </form>
+                        {% endif %}
                     </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>

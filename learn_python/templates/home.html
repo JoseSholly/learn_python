@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python Kids - Learn Python the Fun Way</title>
+    <title>LearnPython - Learn Python the Fun Way</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
@@ -19,7 +19,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light py-4">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">Learn Python</a>
+            <a class="navbar-brand fw-bold" href="#">LearnPython</a>
             <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -49,9 +49,9 @@
             <div class="row justify-content-center text-center">
                 <div class="col-lg-8">
                     <h1 class="hero-title mb-4">Learn Python the Fun Way</h1>
-                    <p class="hero-subtitle mb-5">Interactive coding lessons designed for kids. Start your programming journey with colorful challenges and engaging activities.</p>
+                    <p class="hero-subtitle mb-5">Interactive coding lessons. Start your programming journey with colorful challenges and engaging activities.</p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg px-5">Start Learning</a>
+                        <a href="#" class="btn btn-primary btn-lg px-5">Start Learning</a>
                         <a href="#features" class="btn btn-outline-secondary btn-lg px-5">Learn More</a>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
         <div class="container">
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-6">
-                    <h2 class="section-title mb-3">Why Choose Python Kids?</h2>
+                    <h2 class="section-title mb-3">Why Choose LearnPython?</h2>
                     <p class="section-subtitle">Everything you need to start coding, designed specifically for young learners.</p>
                 </div>
             </div>
@@ -138,7 +138,7 @@ turtle.done()</code></pre>
         <div class="container">
             <div class="row justify-content-center text-center mb-5">
                 <div class="col-lg-6">
-                    <h2 class="section-title mb-3">What Kids Are Saying</h2>
+                    <h2 class="section-title mb-3">What Students Are Saying</h2>
                     <p class="section-subtitle">Real feedback from our young programmers and their parents.</p>
                 </div>
             </div>
@@ -171,6 +171,47 @@ turtle.done()</code></pre>
         </div>
     </section>
 
+    <!-- Tutors Section -->
+    <section class="tutors-section">
+        <div class="container">
+            <div class="row justify-content-center text-center mb-5">
+                <div class="col-lg-6">
+                    <h2 class="section-title mb-3">Meet Your Tutors</h2>
+                    <p class="section-subtitle">Native language tutors to guide your Python learning journey</p>
+                </div>
+            </div>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-4">
+                    <div class="tutor-card text-center">
+                        <div class="tutor-avatar mb-3">
+                            <img src="{% static 'images/sade.png' %}" alt="Sade" class="rounded-circle">
+                        </div>
+                        <h5 class="tutor-name mb-2">Sade</h5>
+                        <p class="tutor-language">Yoruba</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tutor-card text-center">
+                        <div class="tutor-avatar mb-3">
+                            <img src="{% static 'images/amara.png' %}" alt="Amara" class="rounded-circle">
+                        </div>
+                        <h5 class="tutor-name mb-2">Amara</h5>
+                        <p class="tutor-language">Igbo</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="tutor-card text-center">
+                        <div class="tutor-avatar mb-3">
+                            <img src="{% static 'images/hassan.png' %}" alt="Hassan" class="rounded-circle">
+                        </div>
+                        <h5 class="tutor-name mb-2">Hassan</h5>
+                        <p class="tutor-language">Hausa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA section with minimal design -->
     <!-- CTA Section -->
     <section class="cta-section">
@@ -178,8 +219,8 @@ turtle.done()</code></pre>
             <div class="row justify-content-center text-center">
                 <div class="col-lg-6">
                     <h2 class="cta-title mb-3">Ready to Start Coding?</h2>
-                    <p class="cta-description mb-4">Join thousands of kids who are already learning Python and building amazing projects.</p>
-                    <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg px-5">Get Started Free</a>
+                    <p class="cta-description mb-4">Join thousands of Students who are already learning Python and building amazing projects.</p>
+                    <a href="{% url 'account_signup' %}" class="btn btn-primary btn-lg px-5">Get Started Free</a>
                 </div>
             </div>
         </div>
@@ -191,12 +232,18 @@ turtle.done()</code></pre>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <p class="footer-text mb-0">&copy; 2024 Python Kids. All rights reserved.</p>
+                    <p class="footer-text mb-0">&copy; 2024 LearnPython. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <a href="#" class="footer-link me-3">Privacy Policy</a>
                     <a href="#" class="footer-link me-3">Terms of Service</a>
                     <a href="#" class="footer-link">Contact</a>
+                </div>
+            </div>
+            <!-- Powered by Spitch attribution -->
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="powered-by mb-0">Powered by <strong>Spitch</strong></p>
                 </div>
             </div>
         </div>
