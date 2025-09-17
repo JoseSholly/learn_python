@@ -2,40 +2,230 @@
 {% load pygment_tags %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-lg-8 mx-auto">
-            <div class="card p-4">
-                <span class="badge bg-success float-end">{{ lesson.get_difficulty_level_display }}</span>
-                <h1 class="mt-2">{{ lesson.topic }}</h1>
-                <h2 class="text-muted">{{ lesson.subtopic }}</h2>
-                
-                <hr>
-
-                <h3>Code Example</h3>
-                <pre class="bg-light p-3 border rounded">
-                    <code class="language-python">{% autoescape off %}{{ lesson.code_example|pygmentize:'python' }}{% endautoescape %}</code>
-                </pre>
-
-                <h3>Explanation</h3>
-                <p>{{ lesson.code_explanation }}</p>
-
-                <h3>Translations</h3>
-                <ul class="list-group">
-                    {% for translation in lesson.translations.all %}
-                        <li class="list-group-item">
-                            <strong>{{ translation.get_language_display }}</strong>: {{ translation.concept_text }}
-                            {% if translation.audio_file %}
-                                <audio controls>
-                                    <source src="{{ translation.audio_file.url }}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            {% endif %}
-                        </li>
-                    {% empty %}
-                        <li class="list-group-item text-muted">No translations available for this lesson.</li>
-                    {% endfor %}
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <i class="bi bi-code-slash me-2"></i>Learn
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'user:dashboard' %}">
+                            <i class="bi bi-house me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#lessons">Lessons</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
+    </nav>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <!-- Lesson Header -->
+                <div class="lesson-header mb-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <div>
+                            <span class="badge bg-success mb-2">{{ lesson.get_difficulty_level_display }}</span>
+                            <h1 class="lesson-detail-title">{{ lesson.topic }}</h1>
+                            <p class="lesson-detail-subtitle">{{ lesson.subtopic }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Example Section -->
+                <div class="lesson-section mb-5">
+                    <h3 class="section-heading">
+                        <i class="bi bi-code-square me-2"></i>Code Example
+                    </h3>
+                    <div class="code-container">
+                        <div class="code-header">
+                            <span class="code-title">Python</span>
+                        </div>
+                        <pre class="code-content"><code class="language-python">{% autoescape off %}{{ lesson.code_example|pygmentize:'python' }}{% endautoescape %}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Explanation Section -->
+                <div class="lesson-section mb-5">
+                    <h3 class="section-heading">
+                        <i class="bi bi-lightbulb me-2"></i>Explanation
+                    </h3>
+                    <div class="explanation-content">
+                        <p>{{ lesson.code_explanation }}</p>
+                    </div>
+                </div>
+
+                <!-- Translations Section -->
+                <div class="lesson-section">
+                    <h3 class="section-heading">
+                        <i class="bi bi-translate me-2"></i>Translations
+                    </h3>
+                    
+
+                    <div class="translation-tabs">
+                        <input type="radio" name="language" id="lang-yo" value="yo" checked>
+                        <label for="lang-yo">Yoruba</label>
+                        
+                        <input type="radio" name="language" id="lang-ha" value="ha">
+                        <label for="lang-ha">Hausa</label>
+
+                        <input type="radio" name="language" id="lang-ig" value="ig">
+                        <label for="lang-ig">Igbo</label>
+                    </div>
+
+                    <!-- Translation Content -->
+                    <div class="translation-content">
+                    {% for translation in lesson.translations.all %}
+                        <div class="translation-card" data-language="{{ translation.language|lower }}">
+                            <div class="translation-header d-flex justify-content-between align-items-center">
+                                <h4 class="translation-title">{{ translation.get_language_display }}</h4>
+                                {% if translation.audio_file %}
+                                    <button class="btn btn-accent audio-play-btn" data-audio-url="{{ translation.audio_file.url }}">
+                                        <i class="bi bi-play-fill me-2"></i>Play Audio
+                                    </button>
+                                {% endif %}
+                            </div>
+                            <div class="translation-text mt-3">
+                                <p>{{ translation.concept_text }}</p>
+                            </div>
+                            
+                            {% if translation.audio_file %}
+                                <div class="audio-player mt-3" style="display: none;">
+                                    <audio class="audio-element" preload="metadata">
+                                        <source src="{{ translation.audio_file.url }}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                    <div class="audio-controls d-flex align-items-center">
+                                        <button class="audio-control-btn play-pause-btn">
+                                            <i class="bi bi-play-fill"></i>
+                                        </button>
+                                        <div class="audio-progress flex-grow-1 mx-2">
+                                            <div class="progress-bar"></div>
+                                            <div class="progress-handle"></div>
+                                        </div>
+                                        <span class="audio-time">0:00 / 0:00</span>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% empty %}
+                        <div class="empty-state text-center py-5">
+                            <i class="bi bi-translate display-4 text-muted"></i>
+                            <p class="mt-3 text-muted">No translations available for this lesson.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+                <!-- Navigation -->
+                <div class="lesson-navigation mt-5">
+                    <div class="d-flex justify-content-center">
+                        <button class="btn btn-primary">
+                            Completed<i class="bi bi-arrow-right ms-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- JavaScript for language toggle and audio controls -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const languageRadios = document.querySelectorAll('input[name="language"]');
+        const translationCards = document.querySelectorAll('.translation-card');
+        const audioPlayBtns = document.querySelectorAll('.audio-play-btn');
+
+        // Language toggle functionality
+        function updateDisplay() {
+            const selectedRadio = document.querySelector('input[name="language"]:checked');
+            if (selectedRadio) {
+                const selectedLanguage = selectedRadio.value;
+                translationCards.forEach(card => {
+                    const cardLanguage = card.getAttribute('data-language');
+                    card.style.display = (cardLanguage === selectedLanguage) ? 'block' : 'none';
+                });
+            }
+        }
+        
+        languageRadios.forEach(radio => {
+            radio.addEventListener('change', updateDisplay);
+        });
+        updateDisplay(); // Initialize the view
+
+        // Audio player functionality
+        audioPlayBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const translationCard = this.closest('.translation-card');
+                const audioPlayer = translationCard.querySelector('.audio-player');
+                const audioElement = translationCard.querySelector('.audio-element');
+                const playPauseBtn = translationCard.querySelector('.play-pause-btn');
+                const playPauseIcon = playPauseBtn.querySelector('i');
+                const timeDisplay = translationCard.querySelector('.audio-time');
+                
+                // Pause all other audio players
+                document.querySelectorAll('audio').forEach(audio => {
+                    if (audio !== audioElement) {
+                        audio.pause();
+                        audio.closest('.translation-card').querySelector('.audio-player').style.display = 'none';
+                        audio.closest('.translation-card').querySelector('.audio-play-btn').style.display = 'block';
+                    }
+                });
+
+                // Show and play the selected audio
+                audioPlayer.style.display = 'block';
+                this.style.display = 'none';
+                audioElement.play();
+
+                // Update play/pause button icon
+                audioElement.addEventListener('play', () => playPauseIcon.className = 'bi bi-pause-fill');
+                audioElement.addEventListener('pause', () => playPauseIcon.className = 'bi bi-play-fill');
+                audioElement.addEventListener('ended', () => {
+                    playPauseIcon.className = 'bi bi-play-fill';
+                    audioPlayer.style.display = 'none';
+                    this.style.display = 'block';
+                });
+                
+                // Play/pause button functionality
+                playPauseBtn.onclick = () => audioElement.paused ? audioElement.play() : audioElement.pause();
+
+                // Update time display and progress bar
+                const progressBar = translationCard.querySelector('.progress-bar');
+                const progressHandle = translationCard.querySelector('.progress-handle');
+
+                audioElement.addEventListener('timeupdate', function() {
+                    const current = formatTime(this.currentTime);
+                    const duration = formatTime(this.duration);
+                    timeDisplay.textContent = `${current} / ${duration}`;
+                    
+                    const progress = (this.currentTime / this.duration) * 100;
+                    progressBar.style.width = `${progress}%`;
+                    progressHandle.style.left = `${progress}%`;
+                });
+                audioElement.addEventListener('loadedmetadata', function() {
+                    const duration = formatTime(this.duration);
+                    timeDisplay.textContent = `0:00 / ${duration}`;
+                });
+            });
+        });
+        
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+    });
+</script>
 {% endblock %}

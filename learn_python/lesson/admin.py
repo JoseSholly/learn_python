@@ -13,28 +13,18 @@ class LessonTranslationInline(admin.TabularInline):
 # Custom admin for the Lesson model
 @admin.register(Lesson)
 class LessonAdmin(admin.ModelAdmin):
-    # Fields to display in the list view
-    list_display = ("topic", "subtopic", "created_at")
-    # Fields to filter by in the admin
-    list_filter = ("topic", "created_at")
-    # Fields to search
-    search_fields = ("topic", "subtopic", "code_example", "code_explanation")
-    # Fields to edit in the detail view
+    list_display = ('id', 'topic', 'subtopic', 'difficulty_level', 'created_at')
+    list_filter = ('difficulty_level', 'created_at')
+    search_fields = ('topic', 'subtopic', 'code_explanation')
+    ordering = ('difficulty_level', )
     fieldsets = (
-        (None, {"fields": ("topic", "subtopic")}),
-        ("Content", {"fields": ("code_example", "code_explanation")}),
-        ("Metadata", {"fields": ("created_at",)}),
+        (None, {
+            'fields': ('topic', 'subtopic', 'difficulty_level')
+        }),
+        ('Code Details', {
+            'fields': ('code_example', 'code_explanation')
+        }),
     )
-    # Inline editing for translations
-    inlines = [LessonTranslationInline]
-    # Ordering in the list view
-    ordering = ("topic", "subtopic")
-    # Read-only fields
-    readonly_fields = ("created_at",)
-
-    def get_queryset(self, request):
-        # Optimize queries
-        return super().get_queryset(request)
 
 
 # Custom admin for the LessonTranslation model
