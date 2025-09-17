@@ -25,7 +25,7 @@ class Command(BaseCommand):
         client = Spitch()
         target_languages = options["languages"]
 
-        lessons = Lesson.objects.all()[:2]
+        lessons = Lesson.objects.all()[:3]
         if not lessons.exists():
             self.stdout.write(self.style.WARNING("No lessons found to translate."))
             return
