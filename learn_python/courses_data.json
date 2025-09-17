@@ -1,0 +1,150 @@
+[
+{
+  "model": "lesson.lesson",
+  "pk": 19,
+  "fields": {
+    "topic": "Introduction to Variables & Data Types",
+    "subtopic": "Variables and basic data types",
+    "code_example": "name = \"Alice\"\nage = 30\nis_student = True\n\nprint(f\"My name is {name}, I am {age} years old.\")",
+    "code_explanation": "Variables are used to store data in a program. Each variable has a name and a value. This lesson introduces three basic data types. A string is used for text, such as 'Alice', which can be any word or sentence. An integer is for whole numbers, like 30, used for counting or calculations. A boolean is for True or False values, often used for decisions. The f-string is a special way to combine variables into a sentence, making it easy to display information. In this example, we create a variable 'name' and set it to 'Alice'. We set 'age' to 30 and 'is_student' to True. Then, we use an f-string to print a sentence that includes the values of 'name' and 'age'. This helps beginners understand how to store and display data clearly. Example: Assign 'Alice' to 'name', 30 to 'age', and print a sentence with both.",
+    "difficulty_level": "1",
+    "created_at": "2025-09-17T11:27:03.865Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 20,
+  "fields": {
+    "topic": "Control Flow: If/Else Statements",
+    "subtopic": "Making decisions in code",
+    "code_example": "age = 17\n\nif age >= 18:\n    print(\"You are old enough to vote.\")\nelse:\n    print(\"You are not old enough to vote.\")",
+    "code_explanation": "This lesson explains how to make decisions in a program using 'if' and 'else' statements. The 'if' statement checks a condition, like whether a number meets a requirement. If the condition is true, the program runs the code inside the 'if' block. If the condition is false, the program runs the code inside the 'else' block. In this example, we check if a person’s age is 18 or more to decide if they can vote. We set the variable 'age' to 17. The condition 'age >= 18' is false, so the program prints 'You are not old enough to vote.' If 'age' were 18 or more, it would print 'You are old enough to vote.' This structure helps programs make decisions based on data. Example: Set 'age' to 17, check if it is at least 18, and print the correct message.",
+    "difficulty_level": "1",
+    "created_at": "2025-09-17T11:27:03.896Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 21,
+  "fields": {
+    "topic": "Data Structures: Lists and Loops",
+    "subtopic": "Working with collections of data",
+    "code_example": "fruits = [\"apple\", \"banana\", \"cherry\"]\n\nfor fruit in fruits:\n    print(f\"I like {fruit}.\")",
+    "code_explanation": "Lists are used to store multiple items in one variable, like a collection of names or numbers. A 'for' loop goes through each item in a list and runs code for each one. This lesson shows how to use a list and a loop together. In the example, we create a list called 'fruits' containing 'apple', 'banana', and 'cherry'. The 'for' loop takes each fruit one by one and prints a sentence saying 'I like' followed by the fruit’s name. This is useful for working with groups of data, such as processing multiple items in a program. The loop ensures every item is handled in order. Example: Create a list with 'apple', 'banana', and 'cherry', use a loop to go through each item, and print 'I like apple', 'I like banana', and 'I like cherry' for each fruit.",
+    "difficulty_level": "1",
+    "created_at": "2025-09-17T11:27:03.922Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 22,
+  "fields": {
+    "topic": "Object-Oriented Programming (OOP)",
+    "subtopic": "Classes and Objects",
+    "code_example": "class Dog:\n    def __init__(self, name, breed):\n        self.name = name\n        self.breed = breed\n\n    def bark(self):\n        return f'{self.name} says woof!'\n\nmy_dog = Dog('Buddy', 'Golden Retriever')\nprint(my_dog.bark())",
+    "code_explanation": "Object-Oriented Programming organizes code using classes and objects. A class is a blueprint that defines what an object can do and what data it holds. An object is an instance of a class, like a real item made from the blueprint. In this lesson, we create a 'Dog' class that defines a dog’s name and breed as data, and an action called 'bark'. The '__init__' function sets up the object with a name and breed when it is created. The 'bark' function makes the dog say its name followed by 'woof!'. In the example, we create a dog object named 'Buddy' with the breed 'Golden Retriever'. We then call the 'bark' action to print 'Buddy says woof!'. This approach helps organize code for complex programs. Example: Create a Dog class, make a dog named 'Buddy', and print its bark message.",
+    "difficulty_level": "2",
+    "created_at": "2025-09-17T11:27:03.940Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 23,
+  "fields": {
+    "topic": "File Handling",
+    "subtopic": "Reading and writing files",
+    "code_example": "with open('my_file.txt', 'w') as file:\n    file.write('Hello, world!\\n')\n    file.write('This is a new line.')\n\nwith open('my_file.txt', 'r') as file:\n    content = file.read()\n    print(content)",
+    "code_explanation": "File handling allows a program to read from or write to files on a computer. The 'with' statement is a safe way to open a file because it automatically closes the file when done. The 'w' mode is used to write text to a file, creating or overwriting it. The 'r' mode is used to read text from a file. In this example, we first open a file called 'my_file.txt' in write mode and write two lines: 'Hello, world!' and 'This is a new line.' Then, we open the same file in read mode, read all its content into a variable called 'content', and print it. This shows how to save and retrieve data from files. Example: Write 'Hello, world!' and another line to a file, then read the file and print its content.",
+    "difficulty_level": "2",
+    "created_at": "2025-09-17T11:27:03.978Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 24,
+  "fields": {
+    "topic": "List Comprehensions",
+    "subtopic": "Concise list creation",
+    "code_example": "numbers = [1, 2, 3, 4, 5]\nsquared_numbers = [num ** 2 for num in numbers if num % 2 == 0]\n\nprint(squared_numbers)",
+    "code_explanation": "List comprehensions are a short way to create new lists from existing ones in a single line of code. They are faster and more concise than using a regular 'for' loop. In this lesson, we start with a list of numbers [1, 2, 3, 4, 5]. The list comprehension checks each number to see if it is even (using 'num % 2 == 0'). If a number is even, it squares the number (using 'num ** 2') and adds it to a new list. In this example, the even numbers are 2 and 4, so their squares, 4 and 16, are included in the new list. The result is [4, 16]. This method is efficient for transforming lists. Example: Start with numbers [1, 2, 3, 4, 5], select even numbers 2 and 4, square them to get [4, 16], and print the new list.",
+    "difficulty_level": "2",
+    "created_at": "2025-09-17T11:27:04.004Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 25,
+  "fields": {
+    "topic": "Decorators",
+    "subtopic": "Modifying functions without changing code",
+    "code_example": "import time\n\ndef timer(func):\n    def wrapper(*args, **kwargs):\n        start_time = time.time()\n        result = func(*args, **kwargs)\n        end_time = time.time()\n        print(f'{func.__name__} took {end_time - start_time:.4f} seconds.')\n        return result\n    return wrapper\n\n@timer\ndef long_running_function():\n    time.sleep(2)\n    print('Function finished.')\n\nlong_running_function()",
+    "code_explanation": "Decorators are special functions that modify how another function works without changing its code. They are applied using the '@' symbol before a function. In this lesson, we create a 'timer' decorator that measures how long a function takes to run. The decorator records the start time, runs the function, records the end time, and prints the difference. In the example, we apply the 'timer' decorator to a function called 'long_running_function' that waits for 2 seconds and then prints a message. When we run the function, the decorator prints how many seconds it took, like 'long_running_function took 2.0023 seconds.' This is useful for tracking performance. Example: Create a timer decorator, apply it to a function that waits 2 seconds, run the function, and print its execution time.",
+    "difficulty_level": "3",
+    "created_at": "2025-09-17T11:27:04.029Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 26,
+  "fields": {
+    "topic": "Generators",
+    "subtopic": "Creating iterators on the fly",
+    "code_example": "def fibonacci_generator(max):\n    a, b = 0, 1\n    while a < max:\n        yield a\n        a, b = b, a + b\n\nfor num in fibonacci_generator(10):\n    print(num, end=' ')\n\n# Output: 0 1 1 2 3 5 8",
+    "code_explanation": "Generators are functions that produce values one at a time, using 'yield' to pause and resume execution. This saves memory because they do not store all values at once. In this lesson, we create a generator for the Fibonacci sequence, where each number is the sum of the two previous ones. The generator starts with 0 and 1, then yields each number until it reaches a maximum value. In the example, we set the maximum to 10, so the generator produces 0, 1, 1, 2, 3, 5, 8. A 'for' loop prints each number. This is efficient for large sequences. Example: Create a generator for Fibonacci numbers less than 10, yield each number one by one, and print them as 0 1 1 2 3 5 8.",
+    "difficulty_level": "3",
+    "created_at": "2025-09-17T11:27:04.050Z"
+  }
+},
+{
+  "model": "lesson.lesson",
+  "pk": 27,
+  "fields": {
+    "topic": "Asynchronous Programming",
+    "subtopic": "Handling tasks at the same time",
+    "code_example": "import asyncio\n\nasync def fetch_data(delay):\n    await asyncio.sleep(delay)\n    print(f'Fetched data after {delay} seconds.')\n    return delay\n\nasync def main():\n    task1 = asyncio.create_task(fetch_data(3))\n    task2 = asyncio.create_task(fetch_data(1))\n\n    print('Starting tasks...')\n\n    results = await asyncio.gather(task1, task2)\n    print('All tasks finished.')\n\nif __name__ == '__main__':\n    asyncio.run(main())",
+    "code_explanation": "Asynchronous programming allows multiple tasks to run at the same time, making programs faster. It is useful when tasks need to wait, like for data from a network. In this lesson, we use 'async' and 'await' to manage tasks. The 'fetch_data' function waits for a given number of seconds and prints a message. We create two tasks: one waits 3 seconds, and another waits 1 second. Using 'asyncio.create_task', we start both tasks together. The 'asyncio.gather' function waits for both tasks to finish and collects their results. The program prints 'Starting tasks...', runs the tasks, and prints 'All tasks finished.' when done. This shows how to handle multiple waiting tasks efficiently. Example: Create two tasks, one waiting 3 seconds and one waiting 1 second, run them together, and print their results.",
+    "difficulty_level": "3",
+    "created_at": "2025-09-17T11:27:04.084Z"
+  }
+},
+{
+  "model": "lesson.lessontranslation",
+  "pk": 11,
+  "fields": {
+    "lesson": 19,
+    "language": "yo",
+    "concept_text": "Àwọn oníyí ni a máa ń lò láti tọju dáta nínú eto kọmputa. Kọọkan oníyí ní orúkọ àti iye tirẹ̀. Ẹ̀kọ́ yìí ṣàfihàn irú dáta mẹ́ta pàtàkì. Ọ̀rọ̀ (string) ni a fi n ṣàpèjúwe ìtẹ̀sí, bíi 'Alice', èyí tí ó lè jẹ́ ọ̀rọ̀ kankan tàbí gbolohun. Nọ́mbà pípé (integer) ló wúlò fún àwọn nọ́mbà tòkù, bíi 30, fún ìkànbí tàbí iṣirò. Búlàànì (boolean) jẹ́ fún iye otító tàbí irò (True tabi False), tí a fi máa mọ̀ ìpinnu. F-string jẹ́ ọ̀nà pàtó láti darapọ̀ àwọn oníyí sínú gbolohun kan, kó rí rọrùn láti fi dáta hàn. Nínú àpẹẹrẹ yìí, a dá oníyí kan 'name' sílẹ̀ a sì ṣètò rẹ̀ sí 'Alice'. A tún ṣètò 'age' sí 30, a sì dá 'is_student' sí True. Lẹ́yìn náà, a lò f-string láti tẹ gbolohun tí ó ní iye 'name' àti 'age' sínú rẹ̀. Eleyi ràn àwọn alakọ́bẹrẹ lọ́wọ́ láti mọ bí a ṣe ń tọju àti fi dáta hàn gbangba. Àpẹẹrẹ: Fi 'Alice' sí 'name', 30 sí 'age', kí o sì tẹ gbolohun pẹ̀lú mejeeji.",
+    "audio_file": "audio/19_yo.mp3"
+  }
+},
+{
+  "model": "lesson.lessontranslation",
+  "pk": 12,
+  "fields": {
+    "lesson": 19,
+    "language": "ig",
+    "concept_text": "A na-eji variables echekwa data n'ime mmemme. Variable ọ bụla nwere aha na uru. Nkuzi a na-akọwa ụdị data atọ dị mfe. String bụ maka ederede, dịka 'Alice', nke nwere ike ịbụ okwu ma ọ bụ ahịrịokwu ọ bụla. Integer bụ maka ọnụ ọgụgụ dum, dịka 30, eji ya eme mgbakọ na mwepụ ma ọ bụ ịgụ oke. Boolean bụ maka mmetụta eziokwu ma ọ bụ ụgha, nke a na-ejikarị eme mkpebi. F-string bụ ụzọ pụrụ iche iji jikọta variables n'ime otu ahịrịokwu, na-eme ka o dịrị mfe igosi ozi. N'ịhụ ihe atụ a, anyị na-emepụta variable aha ya bụ 'name' ma tinye ya na 'Alice'. Anyị na-etinye 'age' ka ọ bụrụ 30, na 'is_student' ka ọ bụrụ True. Mgbe ahụ, anyị ji f-string bipụta ahịrịokwu gụnyere uru nke 'name' na 'age'. Nke a na-enyere ndị mbido nghọta etu esi echekwa na igosi data n'ụzọ doro anya. Ihe atụ: Tinye 'Alice' na 'name', 30 na 'age', ma pụta ahịrịokwu nwere ha abụọ.",
+    "audio_file": "audio/19_ig.mp3"
+  }
+},
+{
+  "model": "lesson.lessontranslation",
+  "pk": 13,
+  "fields": {
+    "lesson": 19,
+    "language": "ha",
+    "concept_text": "Ana amfani da ƙuduri (variables) don adana bayanai a cikin shirin kwamfuta. Kowanne ƙuduri yana da suna da kuma ƙima. Wannan darasin yana gabatar da nau’ikan bayanai guda uku na asali. Rubutu (string) ana amfani da shi don kalmomi ko jimloli, kamar 'Alice', wadda za ta iya zama kowace kalma ko jimla. Lamba cikakke (integer) na nufin lambobi marasa kusurwa, kamar 30, don ƙididdiga ko lissafi. Boolean na nufin gaskiya ko ƙarya (True ko False), wanda yakan taimaka wajen yanke shawara. F-string wata hanya ce ta musamman wadda ake haɗa ƙuduri cikin jimla, ta yadda zai sauƙaƙa nuna bayani. A wannan misalin, mun ƙirƙiri ƙuduri mai suna 'name' muka sa shi 'Alice'. Mun sa 'age' ya zama 30 kuma 'is_student' ya zama True. Daga nan sai muka yi amfani da f-string don bugawa wani jumla wanda ke dauke da ƙimomin 'name' da 'age'. Wannan yana taimakawa masu farawa su fahimci yadda ake adanawa da kuma bayyana bayanai cikin sauƙi. Misali: Ka sa 'Alice' cikin 'name', sa 30 cikin 'age', sannan ka buga jumla da su duka.",
+    "audio_file": "audio/19_ha.mp3"
+  }
+},
+{
+  "model": "lesson.lessontranslation",
+  "pk": 14,
+  "fields": {
+    "lesson": 27,
+    "language": "yo",
+    "concept_text": "Ìṣàkóso ìṣàkóso amúlùwàádà ń jẹ́ kí ọ̀pọ̀ iṣẹ́ lè ṣiṣẹ́ pọ̀ ní àkókò kan, èyí n mú kí àwọn eto yara ju bẹ́ẹ̀ lọ. Ó wúlò nígbà tí iṣẹ́ kan nilo láti dúró, bíi rí data láti nẹ́tíwọ́ọ̀kì. Ní ẹ̀kọ́ yìí, a n lò 'async' àti 'await' láti ṣakoso iṣẹ́. Ìṣe 'fetch_data' dúró fún iye ìṣẹ́jú tí a fi pàṣẹ, ó sì máa tẹ̀síwájú pẹ̀lú ìrántí. A dá iṣẹ́ méjì sílẹ̀: ẹni kìíní dúró ìṣẹ́jú méta, ẹ̀kejì dúró ìṣẹ́jú kan. Pẹ̀lú 'asyncio.create_task', a bẹ̀rẹ̀ iṣẹ́ méjèèjì pọ̀. Ìṣẹ́ 'asyncio.gather' dúró de àfikún iṣẹ́ méjèèjì kí wọn parí, kó wọn únà pọ̀. Eto náà máa tẹ 'Starting tasks...', ṣiṣẹ́ àwọn iṣẹ́ náà, ó sì tẹ 'All tasks finished.' nígbà tí gbogbo wọn bá parí. Èyí fi hàn bí a ṣe lè ṣakoso iṣẹ́ tó ní kó dúró lọ́pọ̀. Àpẹẹrẹ: dá iṣẹ́ méjì sílẹ̀, ẹni kan dúró iṣẹ́jú méta, ẹ̀kejì dúró iṣẹ́jú kan, ṣiṣẹ́ wọn pọ̀, kí o sì tẹ abajade wọn ya.",
+    "audio_file": "audio/27_yo.mp3"
+  }
+}
+]
