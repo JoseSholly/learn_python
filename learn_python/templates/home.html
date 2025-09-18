@@ -17,7 +17,7 @@
 <body>
     <!-- Decoupled landing page with minimal navigation -->
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light py-4">
+    <nav class="navbar navbar-expand-lg navbar-light py-4 fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold" href="#">
                 <i class="bi bi-code-slash me-2"></i>LearnPython</a>
@@ -52,7 +52,7 @@
                     <h1 class="hero-title mb-4">Learn Python the Fun Way</h1>
                     <p class="hero-subtitle mb-5">Interactive coding lessons. Start your programming journey with colorful challenges and engaging activities.</p>
                     <div class="d-flex justify-content-center gap-3 flex-wrap">
-                        <a href="#" class="btn btn-primary btn-lg px-5">Start Learning</a>
+                        <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg px-5">Start Learning</a>
                         <a href="#features" class="btn btn-outline-secondary btn-lg px-5">Learn More</a>
                     </div>
                 </div>
@@ -212,6 +212,12 @@ turtle.done()</code></pre>
             </div>
         </div>
     </section>
+    <!-- Powered by Spitch attribution -->
+    <div class="row mt-3">
+        <div class="col-12 text-center">
+            <p class="powered-by mb-0">Powered by <strong>Spitch</strong></p>
+        </div>
+    </div>
 
     <!-- CTA section with minimal design -->
     <!-- CTA Section -->
@@ -241,12 +247,7 @@ turtle.done()</code></pre>
                     <a href="#" class="footer-link">Contact</a>
                 </div>
             </div>
-            <!-- Powered by Spitch attribution -->
-            <div class="row mt-3">
-                <div class="col-12 text-center">
-                    <p class="powered-by mb-0">Powered by <strong>Spitch</strong></p>
-                </div>
-            </div>
+            
         </div>
     </footer>
 

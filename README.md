@@ -15,41 +15,58 @@ LearnPython is an interactive Django-based web application designed to teach Pyt
 - Python 3.8 or higher
 - pip (Python package manager)
 - PostgreSQL (recommended for production)
-- [Cloudinary](https://cloudinary.com/) account for media storage
+- Cloudinary account for media storage
 
 ## Installation
 
 1. **Clone the repository**:
+
    ```sh
    git clone https://github.com/JoseSholly/learn_python.git
    cd learn_python/learn_python
    ```
 
 2. **Install dependencies**:
+
    ```sh
    pip install -r requirements.txt
    ```
 
 3. **Set up environment variables**:
+
    - Copy `.env.example` to `.env`:
+
      ```sh
      cp .env.example .env
      ```
    - Fill in your secrets in `.env` (e.g., Cloudinary credentials, database settings, email configuration).
 
 4. **Run migrations and collect static files**:
+
    ```sh
    python manage.py migrate
    python manage.py collectstatic
    ```
 
 5. **Start the development server**:
+
    ```sh
    python manage.py runserver
    ```
 
 6. **Access the app**:
-   - Visit [http://localhost:8000](http://localhost:8000) in your browser.
+
+   - Visit http://localhost:8000 in your browser.
+
+## Testing
+
+The project includes automated tests written with pytest, achieving 92% code coverage. To run the tests:
+
+```sh
+coverage run -m pytest
+```
+
+This command generates a coverage report to verify the tested components of the application.
 
 ## Management Commands
 
@@ -59,9 +76,9 @@ LearnPython is an interactive Django-based web application designed to teach Pyt
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Acknowledgments
 
-- Powered by [Spitch](https://spitch.io/) for multilingual audio generation.
-- Built with [Django](https://www.djangoproject.com/) and [Cloudinary](https://cloudinary.com/).
+- Powered by Spitch for multilingual audio generation.
+- Built with Django and Cloudinary.
