@@ -7,7 +7,6 @@ LearnPython is an interactive Django-based web application designed to teach Pyt
 - **Interactive Lessons**: Hands-on coding exercises and challenges to enhance learning.
 - **Multilingual Support**: Lessons and audio explanations available in English, Yoruba, Igbo, and Hausa.
 - **Audio Integration**: Listen to code explanations in your preferred language, powered by Spitch API.
-- **Progress Tracking**: Earn badges and certificates as you complete lessons.
 - **User Accounts**: Sign up, log in, and track your learning journey.
 - **Admin Dashboard**: Manage users, lessons, and translations efficiently.
 
@@ -22,7 +21,7 @@ LearnPython is an interactive Django-based web application designed to teach Pyt
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/yourusername/learn_python.git
+   git clone https://github.com/JoseSholly/learn_python.git
    cd learn_python/learn_python
    ```
 
@@ -56,7 +55,7 @@ LearnPython is an interactive Django-based web application designed to teach Pyt
 
 - `python manage.py create_lessons`: Populate the database with sample lessons.
 - `python manage.py generate_translation`: Generate lesson translations using the Spitch API.
-- `python manage.py generate_audio`: Generate audio explanations for translations.
+- `python manage.py generate_audio`: Generate audio explanations for translations using Spitch API.
 
 ## License
 
