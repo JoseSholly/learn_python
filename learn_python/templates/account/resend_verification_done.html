@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-body p-4 text-center">
+          <h2 class="mb-4 text-success">{% trans "Verification Email Sent" %}</h2>
+          <p class="lead">
+            {% trans "If the email you entered is registered and not yet verified, you will receive a verification link shortly." %}
+          </p>
+
+          <a href="{% url 'account_login' %}" class="btn btn-primary btn-lg mt-3">
+            {% trans "Return to Login" %}
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+{% endblock %}

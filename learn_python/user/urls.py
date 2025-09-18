@@ -9,4 +9,7 @@ urlpatterns = [
         views.complete_lesson,
         name="complete_lesson",
     ),
+    path("account/not-verified/", views.account_not_verified, name="account_not_verified"),
+    path("account/resend-verification/", views.resend_verification_request, name="resend_verification_request"),
+    path("account/resend-verification/done/", views.resend_verification_done, name="resend_verification_done"),
 ]

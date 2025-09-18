@@ -1,13 +1,15 @@
 from allauth.account.adapter import DefaultAccountAdapter
-from django.core.exceptions import PermissionDenied
+from django.shortcuts import redirect
 
 
 class CustomAccountAdapter(DefaultAccountAdapter):
-    def authenticate(self, request, **credentials):
+    def post_login(self, request, user, **kwargs):
         """
-        Override authenticate to block unverified users from logging in
+        Called just before the login process.
+        Here we can block unverified users and redirect them.
         """
-        user = super().authenticate(request, **credentials)
         if user and not user.is_verified:
-            raise PermissionDenied("Please verify your email before logging in.")
-        return user
+            return redirect("user:account_not_verified")  # 👈 works here!
+        return super().post_login(request, user, **kwargs)
+
+        pass

@@ -1,33 +1,44 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 {% load i18n %}
 
 {% block content %}
 <div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
 
-            <div class="card shadow-lg border-0 rounded-3">
-                <div class="card-body p-4 text-center">
+      <div class="card shadow-lg border-0 rounded-3">
+        <div class="card-body p-4 text-center">
 
-                    <h2 class="mb-4 text-primary">{% trans "Confirm Email Address" %}</h2>
+          {% if confirmation %}
+            <h2 class="mb-4 text-primary">{% trans "Confirm Email Address" %}</h2>
+            <p class="lead">
+              {% blocktrans with email_address=confirmation.email_address.email %}
+                Please confirm that <strong>{{ email_address }}</strong> is your email address.
+              {% endblocktrans %}
+            </p>
 
-                    <p class="lead">
-                        {% blocktrans with email_address=confirmation.email_address.email %}
-                            Please confirm that <strong>{{ email_address }}</strong> is your email address.
-                        {% endblocktrans %}
-                    </p>
+            <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-success btn-lg mt-3">
+                {% trans "Confirm Email" %}
+              </button>
+            </form>
 
-                    <form method="post" action="{% url 'account_confirm_email' confirmation.key %}">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success btn-lg mt-3">
-                            Confirm Email
-                        </button>
-                    </form>
+          {% else %}
 
-                </div>
-            </div>
+            <h2 class="mb-4 text-danger">{% trans "Invalid or Expired Link" %}</h2>
+            <p class="lead">
+              {% trans "This email confirmation link is invalid or has already been used." %}
+            </p>
+            <a href="{% url 'user:resend_verification_request' %}" class="btn btn-warning btn-lg">
+              {% trans "Request a New Verification Email" %}
+            </a>
+          {% endif %}
 
         </div>
+      </div>
+
     </div>
+  </div>
 </div>
 {% endblock %}

@@ -13,3 +13,9 @@ class CustomSignupForm(forms.Form):
         user.last_name = self.cleaned_data.get("last_name", "")
         user.save()
         return user
+
+class ResendVerificationForm(forms.Form):
+    email = forms.EmailField(label="Email", widget=forms.EmailInput(attrs={
+        "class": "form-control",
+        "placeholder": "Enter your email address"
+    }))
