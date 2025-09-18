@@ -90,8 +90,8 @@
                         <div class="translation-card" data-language="{{ translation.language|lower }}">
                             <div class="translation-header d-flex justify-content-between align-items-center">
                                 <h4 class="translation-title">{{ translation.get_language_display }}</h4>
-                                {% if translation.audio_file %}
-                                    <button class="btn btn-accent audio-play-btn" data-audio-url="{{ translation.audio_file.url }}">
+                                {% if translation.audio %}
+                                    <button class="btn btn-accent audio-play-btn" data-audio-url="{{ translation.audio }}">
                                         <i class="bi bi-play-fill me-2"></i>Play Audio
                                     </button>
                                 {% endif %}
@@ -100,10 +100,10 @@
                                 <p>{{ translation.concept_text }}</p>
                             </div>
                             
-                            {% if translation.audio_file %}
+                            {% if translation.audio %}
                                 <div class="audio-player mt-3" style="display: none;">
                                     <audio class="audio-element" preload="metadata">
-                                        <source src="{{ translation.audio_file.url }}" type="audio/mpeg">
+                                        <source src="{{ translation.audio }}" type="audio/mpeg">
                                         Your browser does not support the audio element.
                                     </audio>
                                     <div class="audio-controls d-flex align-items-center">

@@ -4,6 +4,9 @@ import os
 from urllib.parse import urlparse, parse_qsl
 from dotenv import load_dotenv
 from decouple import config
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 load_dotenv()
@@ -49,16 +52,14 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Cloudinary config (use your own credentials)
 CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": config("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": config("CLOUDINARY_API_KEY"),
-    "API_SECRET": config("CLOUDINARY_API_SECRET"),
+    "CLOUD_NAME": os.getenv("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.getenv("CLOUDINARY_API_SECRET"),
+    "CLOUDINARY_URL": os.getenv("CLOUDINARY_URL"),
+    "DEFAULT_FOLDER": "audio",
+    
 }
-
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
-
-MEDIA_URL = "/media/"  # Cloudinary will rewrite this automatically
-MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
 
 SESSION_COOKIE_SECURE = True
 

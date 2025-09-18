@@ -6,8 +6,8 @@ from .models import Lesson, LessonTranslation
 class LessonTranslationInline(admin.TabularInline):
     model = LessonTranslation
     extra = 1  # Number of empty forms to display
-    fields = ("language", "concept_text", "audio_file")
-    readonly_fields = ("audio_file",)  # Make audio_file read-only to prevent accidental changes
+    fields = ("language", "concept_text", "audio")
+    readonly_fields = ("audio",)  # Make audio read-only to prevent accidental changes
 
 
 # Custom admin for the Lesson model
@@ -38,12 +38,12 @@ class LessonTranslationAdmin(admin.ModelAdmin):
     search_fields = ("lesson__subtopic", "lesson__topic", "concept_text")
     # Fields to edit in the detail view
     fieldsets = (
-        (None, {"fields": ("lesson", "language", "concept_text", "audio_file")}),
+        (None, {"fields": ("lesson", "language", "concept_text", "audio")}),
     )
     # Ordering in the list view
     ordering = ("lesson", "language")
     # Read-only fields
-    readonly_fields = ("audio_file",)
+    # readonly_fields = ("audio",)
 
     def get_queryset(self, request):
         # Optimize queries by selecting related objects

@@ -1,5 +1,5 @@
 from django.db import models
-
+from cloudinary.models import CloudinaryField
 
 class Lesson(models.Model):
     DIFFICULTY_CHOICES = [
@@ -38,7 +38,8 @@ class LessonTranslation(models.Model):
     lesson = models.ForeignKey(Lesson, related_name="translations", on_delete=models.CASCADE)
     language = models.CharField(max_length=10, choices=LANG_CHOICES)
     concept_text = models.TextField()              # Explanation in native language
-    audio_file = models.FileField(upload_to="audio/", blank=True, null=True)
+    # Use CloudinaryField for audio
+    audio = CloudinaryField('audio', resource_type='video', blank=True, null=True, help_text="Lesson content translation audio")
 
     class Meta:
         unique_together = ("lesson", "language")
