@@ -7,3 +7,4 @@ __pycache__/
 *.pyo
 *.pyd
 *.log
+/learn_python/lesson_translation_fixture.json
